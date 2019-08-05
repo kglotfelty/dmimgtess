@@ -6,7 +6,7 @@ ahelpdir = $(prefix)/share/doc/xml
 
 binexe_PROGRAMS = $(tool)
 
-dmimgtess_SOURCES = dmimgtess.c
+dmimgtess_SOURCES = dmimgtess.c t_dmimgtess.c
 dmimgtess_CPPFLAGS = $(CIAO_CFLAGS)
 dmimgtess_LDADD = $(CIAO_LIBS) -ldmimgio
 dmimgtess_LINK = $(CXX) -o $@ -Wl,-rpath,$(prefix)/lib -Wl,-rpath,$(prefix)/ots/lib 

@@ -51,7 +51,8 @@ am__EXEEXT_1 = dmimgtess$(EXEEXT)
 am__installdirs = "$(DESTDIR)$(binexedir)" "$(DESTDIR)$(ahelpdir)" \
 	"$(DESTDIR)$(paramdir)"
 PROGRAMS = $(binexe_PROGRAMS)
-am_dmimgtess_OBJECTS = dmimgtess-dmimgtess.$(OBJEXT)
+am_dmimgtess_OBJECTS = dmimgtess-dmimgtess.$(OBJEXT) \
+	dmimgtess-t_dmimgtess.$(OBJEXT)
 dmimgtess_OBJECTS = $(am_dmimgtess_OBJECTS)
 am__DEPENDENCIES_1 =
 dmimgtess_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
@@ -187,7 +188,7 @@ tool = dmimgtess
 binexedir = $(prefix)/binexe
 paramdir = $(prefix)/param
 ahelpdir = $(prefix)/share/doc/xml
-dmimgtess_SOURCES = dmimgtess.c
+dmimgtess_SOURCES = dmimgtess.c t_dmimgtess.c
 dmimgtess_CPPFLAGS = $(CIAO_CFLAGS)
 dmimgtess_LDADD = $(CIAO_LIBS) -ldmimgio $(am__append_1)
 dmimgtess_LINK = $(CXX) -o $@ -Wl,-rpath,$(prefix)/lib -Wl,-rpath,$(prefix)/ots/lib 
@@ -275,6 +276,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-dmimgtess.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-t_dmimgtess.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -303,6 +305,20 @@ dmimgtess-dmimgtess.obj: dmimgtess.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='dmimgtess.c' object='dmimgtess-dmimgtess.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-dmimgtess.obj `if test -f 'dmimgtess.c'; then $(CYGPATH_W) 'dmimgtess.c'; else $(CYGPATH_W) '$(srcdir)/dmimgtess.c'; fi`
+
+dmimgtess-t_dmimgtess.o: t_dmimgtess.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-t_dmimgtess.o -MD -MP -MF $(DEPDIR)/dmimgtess-t_dmimgtess.Tpo -c -o dmimgtess-t_dmimgtess.o `test -f 't_dmimgtess.c' || echo '$(srcdir)/'`t_dmimgtess.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-t_dmimgtess.Tpo $(DEPDIR)/dmimgtess-t_dmimgtess.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='t_dmimgtess.c' object='dmimgtess-t_dmimgtess.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-t_dmimgtess.o `test -f 't_dmimgtess.c' || echo '$(srcdir)/'`t_dmimgtess.c
+
+dmimgtess-t_dmimgtess.obj: t_dmimgtess.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-t_dmimgtess.obj -MD -MP -MF $(DEPDIR)/dmimgtess-t_dmimgtess.Tpo -c -o dmimgtess-t_dmimgtess.obj `if test -f 't_dmimgtess.c'; then $(CYGPATH_W) 't_dmimgtess.c'; else $(CYGPATH_W) '$(srcdir)/t_dmimgtess.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-t_dmimgtess.Tpo $(DEPDIR)/dmimgtess-t_dmimgtess.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='t_dmimgtess.c' object='dmimgtess-t_dmimgtess.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-t_dmimgtess.obj `if test -f 't_dmimgtess.c'; then $(CYGPATH_W) 't_dmimgtess.c'; else $(CYGPATH_W) '$(srcdir)/t_dmimgtess.c'; fi`
 install-dist_ahelpDATA: $(dist_ahelp_DATA)
 	@$(NORMAL_INSTALL)
 	test -z "$(ahelpdir)" || $(MKDIR_P) "$(DESTDIR)$(ahelpdir)"
