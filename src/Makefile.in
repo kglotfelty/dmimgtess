@@ -52,7 +52,19 @@ am__installdirs = "$(DESTDIR)$(binexedir)" "$(DESTDIR)$(ahelpdir)" \
 	"$(DESTDIR)$(paramdir)"
 PROGRAMS = $(binexe_PROGRAMS)
 am_dmimgtess_OBJECTS = dmimgtess-dmimgtess.$(OBJEXT) \
-	dmimgtess-t_dmimgtess.$(OBJEXT)
+	dmimgtess-heap2.$(OBJEXT) dmimgtess-t_dmimgtess.$(OBJEXT) \
+	dmimgtess-vtpdetect_aots_voronoi_edgelist.$(OBJEXT) \
+	dmimgtess-vtpdetect_aots_voronoi_geometry.$(OBJEXT) \
+	dmimgtess-vtpdetect_aots_voronoi_heap.$(OBJEXT) \
+	dmimgtess-vtpdetect_aots_voronoi_main.$(OBJEXT) \
+	dmimgtess-vtpdetect_aots_voronoi_memory.$(OBJEXT) \
+	dmimgtess-vtpdetect_aots_voronoi_output.$(OBJEXT) \
+	dmimgtess-vtpdetect_aots_voronoi_voronoi.$(OBJEXT) \
+	dmimgtess-vtpdetect_cleanup.$(OBJEXT) \
+	dmimgtess-vtpdetect_compare.$(OBJEXT) \
+	dmimgtess-vtpdetect_input.$(OBJEXT) \
+	dmimgtess-vtpdetect_interface.$(OBJEXT) \
+	dmimgtess-vtpdetect_voroni.$(OBJEXT)
 dmimgtess_OBJECTS = $(am_dmimgtess_OBJECTS)
 am__DEPENDENCIES_1 =
 dmimgtess_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
@@ -188,7 +200,26 @@ tool = dmimgtess
 binexedir = $(prefix)/binexe
 paramdir = $(prefix)/param
 ahelpdir = $(prefix)/share/doc/xml
-dmimgtess_SOURCES = dmimgtess.c t_dmimgtess.c
+dmimgtess_SOURCES = \
+	dmimgtess.c \
+	heap2.c \
+	t_dmimgtess.c \
+	vtpdetect.h \
+	vtpdetect_aots.h \
+	vtpdetect_aots_voronoi_defs.h \
+	vtpdetect_aots_voronoi_edgelist.c \
+	vtpdetect_aots_voronoi_geometry.c \
+	vtpdetect_aots_voronoi_heap.c \
+	vtpdetect_aots_voronoi_main.c \
+	vtpdetect_aots_voronoi_memory.c \
+	vtpdetect_aots_voronoi_output.c \
+	vtpdetect_aots_voronoi_voronoi.c \
+	vtpdetect_cleanup.c \
+	vtpdetect_compare.c \
+	vtpdetect_input.c \
+	vtpdetect_interface.c \
+	vtpdetect_voroni.c
+
 dmimgtess_CPPFLAGS = $(CIAO_CFLAGS)
 dmimgtess_LDADD = $(CIAO_LIBS) -ldmimgio $(am__append_1)
 dmimgtess_LINK = $(CXX) -o $@ -Wl,-rpath,$(prefix)/lib -Wl,-rpath,$(prefix)/ots/lib 
@@ -276,7 +307,20 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-dmimgtess.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-heap2.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-t_dmimgtess.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_edgelist.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_geometry.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_heap.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_memory.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_output.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_voronoi.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_cleanup.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_compare.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_input.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_interface.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/dmimgtess-vtpdetect_voroni.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -306,6 +350,20 @@ dmimgtess-dmimgtess.obj: dmimgtess.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-dmimgtess.obj `if test -f 'dmimgtess.c'; then $(CYGPATH_W) 'dmimgtess.c'; else $(CYGPATH_W) '$(srcdir)/dmimgtess.c'; fi`
 
+dmimgtess-heap2.o: heap2.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-heap2.o -MD -MP -MF $(DEPDIR)/dmimgtess-heap2.Tpo -c -o dmimgtess-heap2.o `test -f 'heap2.c' || echo '$(srcdir)/'`heap2.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-heap2.Tpo $(DEPDIR)/dmimgtess-heap2.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='heap2.c' object='dmimgtess-heap2.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-heap2.o `test -f 'heap2.c' || echo '$(srcdir)/'`heap2.c
+
+dmimgtess-heap2.obj: heap2.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-heap2.obj -MD -MP -MF $(DEPDIR)/dmimgtess-heap2.Tpo -c -o dmimgtess-heap2.obj `if test -f 'heap2.c'; then $(CYGPATH_W) 'heap2.c'; else $(CYGPATH_W) '$(srcdir)/heap2.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-heap2.Tpo $(DEPDIR)/dmimgtess-heap2.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='heap2.c' object='dmimgtess-heap2.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-heap2.obj `if test -f 'heap2.c'; then $(CYGPATH_W) 'heap2.c'; else $(CYGPATH_W) '$(srcdir)/heap2.c'; fi`
+
 dmimgtess-t_dmimgtess.o: t_dmimgtess.c
 @am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-t_dmimgtess.o -MD -MP -MF $(DEPDIR)/dmimgtess-t_dmimgtess.Tpo -c -o dmimgtess-t_dmimgtess.o `test -f 't_dmimgtess.c' || echo '$(srcdir)/'`t_dmimgtess.c
 @am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-t_dmimgtess.Tpo $(DEPDIR)/dmimgtess-t_dmimgtess.Po
@@ -319,6 +377,174 @@ dmimgtess-t_dmimgtess.obj: t_dmimgtess.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='t_dmimgtess.c' object='dmimgtess-t_dmimgtess.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-t_dmimgtess.obj `if test -f 't_dmimgtess.c'; then $(CYGPATH_W) 't_dmimgtess.c'; else $(CYGPATH_W) '$(srcdir)/t_dmimgtess.c'; fi`
+
+dmimgtess-vtpdetect_aots_voronoi_edgelist.o: vtpdetect_aots_voronoi_edgelist.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_edgelist.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_edgelist.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_edgelist.o `test -f 'vtpdetect_aots_voronoi_edgelist.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_edgelist.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_edgelist.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_edgelist.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_edgelist.c' object='dmimgtess-vtpdetect_aots_voronoi_edgelist.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_edgelist.o `test -f 'vtpdetect_aots_voronoi_edgelist.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_edgelist.c
+
+dmimgtess-vtpdetect_aots_voronoi_edgelist.obj: vtpdetect_aots_voronoi_edgelist.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_edgelist.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_edgelist.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_edgelist.obj `if test -f 'vtpdetect_aots_voronoi_edgelist.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_edgelist.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_edgelist.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_edgelist.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_edgelist.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_edgelist.c' object='dmimgtess-vtpdetect_aots_voronoi_edgelist.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_edgelist.obj `if test -f 'vtpdetect_aots_voronoi_edgelist.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_edgelist.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_edgelist.c'; fi`
+
+dmimgtess-vtpdetect_aots_voronoi_geometry.o: vtpdetect_aots_voronoi_geometry.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_geometry.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_geometry.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_geometry.o `test -f 'vtpdetect_aots_voronoi_geometry.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_geometry.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_geometry.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_geometry.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_geometry.c' object='dmimgtess-vtpdetect_aots_voronoi_geometry.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_geometry.o `test -f 'vtpdetect_aots_voronoi_geometry.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_geometry.c
+
+dmimgtess-vtpdetect_aots_voronoi_geometry.obj: vtpdetect_aots_voronoi_geometry.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_geometry.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_geometry.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_geometry.obj `if test -f 'vtpdetect_aots_voronoi_geometry.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_geometry.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_geometry.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_geometry.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_geometry.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_geometry.c' object='dmimgtess-vtpdetect_aots_voronoi_geometry.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_geometry.obj `if test -f 'vtpdetect_aots_voronoi_geometry.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_geometry.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_geometry.c'; fi`
+
+dmimgtess-vtpdetect_aots_voronoi_heap.o: vtpdetect_aots_voronoi_heap.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_heap.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_heap.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_heap.o `test -f 'vtpdetect_aots_voronoi_heap.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_heap.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_heap.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_heap.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_heap.c' object='dmimgtess-vtpdetect_aots_voronoi_heap.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_heap.o `test -f 'vtpdetect_aots_voronoi_heap.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_heap.c
+
+dmimgtess-vtpdetect_aots_voronoi_heap.obj: vtpdetect_aots_voronoi_heap.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_heap.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_heap.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_heap.obj `if test -f 'vtpdetect_aots_voronoi_heap.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_heap.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_heap.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_heap.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_heap.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_heap.c' object='dmimgtess-vtpdetect_aots_voronoi_heap.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_heap.obj `if test -f 'vtpdetect_aots_voronoi_heap.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_heap.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_heap.c'; fi`
+
+dmimgtess-vtpdetect_aots_voronoi_main.o: vtpdetect_aots_voronoi_main.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_main.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_main.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_main.o `test -f 'vtpdetect_aots_voronoi_main.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_main.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_main.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_main.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_main.c' object='dmimgtess-vtpdetect_aots_voronoi_main.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_main.o `test -f 'vtpdetect_aots_voronoi_main.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_main.c
+
+dmimgtess-vtpdetect_aots_voronoi_main.obj: vtpdetect_aots_voronoi_main.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_main.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_main.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_main.obj `if test -f 'vtpdetect_aots_voronoi_main.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_main.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_main.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_main.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_main.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_main.c' object='dmimgtess-vtpdetect_aots_voronoi_main.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_main.obj `if test -f 'vtpdetect_aots_voronoi_main.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_main.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_main.c'; fi`
+
+dmimgtess-vtpdetect_aots_voronoi_memory.o: vtpdetect_aots_voronoi_memory.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_memory.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_memory.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_memory.o `test -f 'vtpdetect_aots_voronoi_memory.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_memory.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_memory.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_memory.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_memory.c' object='dmimgtess-vtpdetect_aots_voronoi_memory.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_memory.o `test -f 'vtpdetect_aots_voronoi_memory.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_memory.c
+
+dmimgtess-vtpdetect_aots_voronoi_memory.obj: vtpdetect_aots_voronoi_memory.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_memory.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_memory.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_memory.obj `if test -f 'vtpdetect_aots_voronoi_memory.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_memory.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_memory.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_memory.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_memory.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_memory.c' object='dmimgtess-vtpdetect_aots_voronoi_memory.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_memory.obj `if test -f 'vtpdetect_aots_voronoi_memory.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_memory.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_memory.c'; fi`
+
+dmimgtess-vtpdetect_aots_voronoi_output.o: vtpdetect_aots_voronoi_output.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_output.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_output.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_output.o `test -f 'vtpdetect_aots_voronoi_output.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_output.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_output.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_output.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_output.c' object='dmimgtess-vtpdetect_aots_voronoi_output.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_output.o `test -f 'vtpdetect_aots_voronoi_output.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_output.c
+
+dmimgtess-vtpdetect_aots_voronoi_output.obj: vtpdetect_aots_voronoi_output.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_output.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_output.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_output.obj `if test -f 'vtpdetect_aots_voronoi_output.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_output.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_output.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_output.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_output.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_output.c' object='dmimgtess-vtpdetect_aots_voronoi_output.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_output.obj `if test -f 'vtpdetect_aots_voronoi_output.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_output.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_output.c'; fi`
+
+dmimgtess-vtpdetect_aots_voronoi_voronoi.o: vtpdetect_aots_voronoi_voronoi.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_voronoi.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_voronoi.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_voronoi.o `test -f 'vtpdetect_aots_voronoi_voronoi.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_voronoi.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_voronoi.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_voronoi.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_voronoi.c' object='dmimgtess-vtpdetect_aots_voronoi_voronoi.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_voronoi.o `test -f 'vtpdetect_aots_voronoi_voronoi.c' || echo '$(srcdir)/'`vtpdetect_aots_voronoi_voronoi.c
+
+dmimgtess-vtpdetect_aots_voronoi_voronoi.obj: vtpdetect_aots_voronoi_voronoi.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_aots_voronoi_voronoi.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_voronoi.Tpo -c -o dmimgtess-vtpdetect_aots_voronoi_voronoi.obj `if test -f 'vtpdetect_aots_voronoi_voronoi.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_voronoi.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_voronoi.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_voronoi.Tpo $(DEPDIR)/dmimgtess-vtpdetect_aots_voronoi_voronoi.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_aots_voronoi_voronoi.c' object='dmimgtess-vtpdetect_aots_voronoi_voronoi.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_aots_voronoi_voronoi.obj `if test -f 'vtpdetect_aots_voronoi_voronoi.c'; then $(CYGPATH_W) 'vtpdetect_aots_voronoi_voronoi.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_aots_voronoi_voronoi.c'; fi`
+
+dmimgtess-vtpdetect_cleanup.o: vtpdetect_cleanup.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_cleanup.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_cleanup.Tpo -c -o dmimgtess-vtpdetect_cleanup.o `test -f 'vtpdetect_cleanup.c' || echo '$(srcdir)/'`vtpdetect_cleanup.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_cleanup.Tpo $(DEPDIR)/dmimgtess-vtpdetect_cleanup.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_cleanup.c' object='dmimgtess-vtpdetect_cleanup.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_cleanup.o `test -f 'vtpdetect_cleanup.c' || echo '$(srcdir)/'`vtpdetect_cleanup.c
+
+dmimgtess-vtpdetect_cleanup.obj: vtpdetect_cleanup.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_cleanup.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_cleanup.Tpo -c -o dmimgtess-vtpdetect_cleanup.obj `if test -f 'vtpdetect_cleanup.c'; then $(CYGPATH_W) 'vtpdetect_cleanup.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_cleanup.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_cleanup.Tpo $(DEPDIR)/dmimgtess-vtpdetect_cleanup.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_cleanup.c' object='dmimgtess-vtpdetect_cleanup.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_cleanup.obj `if test -f 'vtpdetect_cleanup.c'; then $(CYGPATH_W) 'vtpdetect_cleanup.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_cleanup.c'; fi`
+
+dmimgtess-vtpdetect_compare.o: vtpdetect_compare.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_compare.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_compare.Tpo -c -o dmimgtess-vtpdetect_compare.o `test -f 'vtpdetect_compare.c' || echo '$(srcdir)/'`vtpdetect_compare.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_compare.Tpo $(DEPDIR)/dmimgtess-vtpdetect_compare.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_compare.c' object='dmimgtess-vtpdetect_compare.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_compare.o `test -f 'vtpdetect_compare.c' || echo '$(srcdir)/'`vtpdetect_compare.c
+
+dmimgtess-vtpdetect_compare.obj: vtpdetect_compare.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_compare.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_compare.Tpo -c -o dmimgtess-vtpdetect_compare.obj `if test -f 'vtpdetect_compare.c'; then $(CYGPATH_W) 'vtpdetect_compare.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_compare.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_compare.Tpo $(DEPDIR)/dmimgtess-vtpdetect_compare.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_compare.c' object='dmimgtess-vtpdetect_compare.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_compare.obj `if test -f 'vtpdetect_compare.c'; then $(CYGPATH_W) 'vtpdetect_compare.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_compare.c'; fi`
+
+dmimgtess-vtpdetect_input.o: vtpdetect_input.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_input.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_input.Tpo -c -o dmimgtess-vtpdetect_input.o `test -f 'vtpdetect_input.c' || echo '$(srcdir)/'`vtpdetect_input.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_input.Tpo $(DEPDIR)/dmimgtess-vtpdetect_input.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_input.c' object='dmimgtess-vtpdetect_input.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_input.o `test -f 'vtpdetect_input.c' || echo '$(srcdir)/'`vtpdetect_input.c
+
+dmimgtess-vtpdetect_input.obj: vtpdetect_input.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_input.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_input.Tpo -c -o dmimgtess-vtpdetect_input.obj `if test -f 'vtpdetect_input.c'; then $(CYGPATH_W) 'vtpdetect_input.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_input.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_input.Tpo $(DEPDIR)/dmimgtess-vtpdetect_input.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_input.c' object='dmimgtess-vtpdetect_input.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_input.obj `if test -f 'vtpdetect_input.c'; then $(CYGPATH_W) 'vtpdetect_input.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_input.c'; fi`
+
+dmimgtess-vtpdetect_interface.o: vtpdetect_interface.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_interface.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_interface.Tpo -c -o dmimgtess-vtpdetect_interface.o `test -f 'vtpdetect_interface.c' || echo '$(srcdir)/'`vtpdetect_interface.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_interface.Tpo $(DEPDIR)/dmimgtess-vtpdetect_interface.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_interface.c' object='dmimgtess-vtpdetect_interface.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_interface.o `test -f 'vtpdetect_interface.c' || echo '$(srcdir)/'`vtpdetect_interface.c
+
+dmimgtess-vtpdetect_interface.obj: vtpdetect_interface.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_interface.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_interface.Tpo -c -o dmimgtess-vtpdetect_interface.obj `if test -f 'vtpdetect_interface.c'; then $(CYGPATH_W) 'vtpdetect_interface.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_interface.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_interface.Tpo $(DEPDIR)/dmimgtess-vtpdetect_interface.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_interface.c' object='dmimgtess-vtpdetect_interface.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_interface.obj `if test -f 'vtpdetect_interface.c'; then $(CYGPATH_W) 'vtpdetect_interface.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_interface.c'; fi`
+
+dmimgtess-vtpdetect_voroni.o: vtpdetect_voroni.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_voroni.o -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_voroni.Tpo -c -o dmimgtess-vtpdetect_voroni.o `test -f 'vtpdetect_voroni.c' || echo '$(srcdir)/'`vtpdetect_voroni.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_voroni.Tpo $(DEPDIR)/dmimgtess-vtpdetect_voroni.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_voroni.c' object='dmimgtess-vtpdetect_voroni.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_voroni.o `test -f 'vtpdetect_voroni.c' || echo '$(srcdir)/'`vtpdetect_voroni.c
+
+dmimgtess-vtpdetect_voroni.obj: vtpdetect_voroni.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT dmimgtess-vtpdetect_voroni.obj -MD -MP -MF $(DEPDIR)/dmimgtess-vtpdetect_voroni.Tpo -c -o dmimgtess-vtpdetect_voroni.obj `if test -f 'vtpdetect_voroni.c'; then $(CYGPATH_W) 'vtpdetect_voroni.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_voroni.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/dmimgtess-vtpdetect_voroni.Tpo $(DEPDIR)/dmimgtess-vtpdetect_voroni.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vtpdetect_voroni.c' object='dmimgtess-vtpdetect_voroni.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(dmimgtess_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o dmimgtess-vtpdetect_voroni.obj `if test -f 'vtpdetect_voroni.c'; then $(CYGPATH_W) 'vtpdetect_voroni.c'; else $(CYGPATH_W) '$(srcdir)/vtpdetect_voroni.c'; fi`
 install-dist_ahelpDATA: $(dist_ahelp_DATA)
 	@$(NORMAL_INSTALL)
 	test -z "$(ahelpdir)" || $(MKDIR_P) "$(DESTDIR)$(ahelpdir)"
