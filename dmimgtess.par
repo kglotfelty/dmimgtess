@@ -1,0 +1,8 @@
+infile,f,a,"",,,"Input image name"
+outfile,f,a,"",,,"Output region tessalation file"
+minpix,i,h,1,,,"Minimum pixel value to consider"
+edge,i,h,3,0,,"Throw away cells this close to the edge"
+method,s,h,tesselate,tesselate|triangulate|circle,,"Tesselation or Triangulation"
+clobber,b,h,no,,,"Remove existing files"
+verbose,i,h,0,0,0,"Tool chatter level"
+mode,s,h,ql,,,

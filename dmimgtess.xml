@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cxchelptopics SYSTEM "CXCHelp.dtd">
+<cxchelptopics>
+<ENTRY key="dmimgtess" context="tools" refkeywords="dm image images Voronoi tesselation Delaunay triangles" seealsogroups="dmimgtools regiontools">
+<SYNOPSIS>
+
+  Computes the Voronoi tessalation of an image
+   
+</SYNOPSIS>
+
+<ADDRESS><URL>dmimgtess.html</URL></ADDRESS>
+<ADDRESS>
+<URL>http://cxc.harvard.edu/ciao/ahelp/dmimgtess.html</URL>
+
+</ADDRESS>
+<DESC>
+<PARA>
+
+	'dmimgtess' computes the Voronoi tessalation of the input
+	image.  The output is a standard ASC-FITS region file format.      
+</PARA>
+
+<PARA>
+The
+   'edge' parameter tells how close to the edge to ignore cells.
+   'edge' is measures in number of neighbors before hitting the edge.
+</PARA>
+<PARA>
+   Ther user can select the 'method' to be either 'tesselate' or 'triangulate'
+   which controls whether the output region is one or the other.
+</PARA>
+
+
+</DESC>
+<QEXAMPLELIST>
+<QEXAMPLE>
+<SYNTAX>
+<LINE>
+
+    dmimgtess infile=img.fits outfile=out_region.fits minpix=0 edge=0 meth=tess
+     
+</LINE>
+
+</SYNTAX>
+<DESC>
+<PARA>
+
+    Computes tesselation of the input image whose pixel values are
+    greater-than 0.  All the cells are output since the
+    edge is set to 0.
+</PARA>
+
+</DESC>
+
+</QEXAMPLE>
+
+<QEXAMPLE>
+<SYNTAX>
+<LINE>
+    dmimgtess infile=img.fits"[sky=circle(100,100,35)]"
+    outfile=subregion.fits minpix=0 meth=triangle
+     
+</LINE>
+
+</SYNTAX>
+<DESC>
+<PARA>
+
+    Compute the triangulation only for the events in the given filtered
+    image. The edge parameter is ignored for triangulation. 
+</PARA>
+
+</DESC>
+
+</QEXAMPLE>
+
+
+
+</QEXAMPLELIST>
+<PARAMLIST>
+<PARAM name="infile" type="file" reqd="yes" filetype="input">
+<SYNOPSIS>
+
+	The input image.
+    
+</SYNOPSIS>
+<DESC>
+<PARA>
+
+  The input 2D image.  
+      
+</PARA>
+
+</DESC>
+
+</PARAM>
+<PARAM name="outfile" type="file" reqd="yes" filetype="output">
+<SYNOPSIS>
+
+	The output file name.
+    
+</SYNOPSIS>
+<DESC>
+<PARA>
+   The output file contains a valid ASC_FITS-REGION format.  The
+   primary image is a mask showing which pixels belong to which cell.
+</PARA>
+
+</DESC>
+
+</PARAM>
+<PARAM name="minpix" type="integer" reqd="no" def="0">
+<SYNOPSIS>
+
+  Minimum pixel value
+    
+</SYNOPSIS>
+<DESC>
+<PARA>
+
+  Only image pixel values (strickly) greater-than to this value will be
+  considered.  
+
+</PARA>
+</DESC>
+
+</PARAM>
+<PARAM name="edge" type="integer" reqd="no" def="3">
+<SYNOPSIS>
+
+  How close to the edge to output
+    
+</SYNOPSIS>
+<DESC>
+<PARA>
+
+  This only affects the output.  Near the edge of the data the cells
+  become very large since there is no additional data to constrain
+  them.  This parameter adjusts how from the the edge the program
+  should ignore.
+</PARA>
+</DESC>
+
+</PARAM>
+
+
+<PARAM name="method" type="string" def="tesselate">
+<SYNOPSIS>
+  tesselate or triangulate
+</SYNOPSIS>
+</PARAM>
+
+
+
+<PARAM name="clobber" type="boolean" def="no">
+<SYNOPSIS>
+
+	Remove output if it exists?
+    
+</SYNOPSIS>
+<DESC>
+<PARA>
+
+	Used to specify whether or not to clobber existing file that
+	has the same name as the specified output file 
+         
+</PARA>
+
+</DESC>
+
+</PARAM>
+<PARAM name="verbose" type="integer" def="0" min="0" max="5">
+<SYNOPSIS>
+
+	The tool chatter level
+    
+</SYNOPSIS>
+<DESC>
+<PARA>
+
+	Verbose can be from 0 to 5, generating different amounts
+        of debugging output.
+         
+</PARA>
+
+</DESC>
+
+</PARAM>
+</PARAMLIST>
+<BUGS><PARA>
+	See the
+        <HREF link="http://cxc.harvard.edu/ciao/bugs/dmimgtess.html">bugs page
+	for this tool</HREF>
+        on the CIAO website for an up-to-date listing of known bugs.
+      </PARA></BUGS>
+<VERSION>CIAO 3.0</VERSION>
+<LASTMODIFIED>June 2003</LASTMODIFIED>
+
+</ENTRY>
+
+</cxchelptopics>
