@@ -28,7 +28,7 @@ dmimgtess_SOURCES = \
 
 
 dmimgtess_CPPFLAGS = $(CIAO_CFLAGS)
-dmimgtess_LDADD = $(CIAO_LIBS) -ldmimgio
+dmimgtess_LDADD = $(CIAO_LIBS)
 dmimgtess_LINK = $(CXX) -o $@ -Wl,-rpath,$(prefix)/lib -Wl,-rpath,$(prefix)/ots/lib 
 
 # problems with libstdc++ and cxcparam on Linux :(
