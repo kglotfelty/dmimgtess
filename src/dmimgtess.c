@@ -37,7 +37,7 @@ int   GlobalDebugLevel;
 bool  wcs_present;
 
 
-long *G_lAxes;
+long G_lAxes[2];
 dmDescriptor *xx_desc;
 dmDescriptor *yy_desc;
 
@@ -52,45 +52,28 @@ void outputDebug( // Needed by vtp routines
 
 
 
-long load_image( char *infile, struct Event **events, double minval,
+long load_infile_image( char *infile, struct Event **events, double minval,
                  dmBlock **inBlock);
 
 
-long load_image( char *infile, struct Event **events, double minval,
+long load_infile_image( char *infile, struct Event **events, double minval,
                  dmBlock **inBlock)
 {
-  void *data;
-  regRegion *dss;
-  long null;
-  short has_null;
-  dmDataType dt;
+  Image *image;
+  
+  if ( NULL == ( image = load_image( infile))) {
+      return(-1);
+  }
+  
+  G_lAxes[0] = image->lAxes[0];
+  G_lAxes[1] = image->lAxes[1];
 
-  long xx,yy;
+  xx_desc = image->xdesc;
+  yy_desc = image->ydesc;
+
+  *inBlock = image->block;
 
   long nvals;
-  short *mask = NULL;
-  
-  if ( NULL == ( *inBlock = dmImageOpen( infile) ) ) {
-    err_msg("ERROR: Cannot open image '%s'\n", infile );
-    return(-1);
-  }
-
-  if ( dmUNKNOWNTYPE == ( dt = get_image_data( *inBlock, &data,  &G_lAxes, 
-                                               &dss, &null, &has_null ) ) ) {
-    err_msg("ERROR: Cannot get image data or unknown image data-type for "
-            "file '%s'\n", infile);
-    return(-1);
-  }
-  if ( 0 != get_image_wcs( *inBlock, &xx_desc, &yy_desc ) ) {
-    err_msg("ERROR: Cannot load WCS for file '%s'\n", infile );
-    return(-1);
-  }
-
-  mask = get_image_mask( *inBlock, data, dt, G_lAxes, dss, 
-    null, has_null, xx_desc, yy_desc );
-  
-
-
   nvals=0;
 
   /* A bit sloppy to alloc this much data, but easier than 
@@ -100,17 +83,15 @@ long load_image( char *infile, struct Event **events, double minval,
   /* would normally do the yy=lAxes[0];yy--; trick, but we want to get
      the data sorted in y and then x so need to do it this way or
      else need to sort later */
+  long xx,yy;
   for(yy=0;yy<G_lAxes[1];yy++) {
 
     for (xx=0;xx<G_lAxes[0]; xx++) {
 
       double dat;
       
-      dat = get_image_value( data, dt, xx, yy, G_lAxes, mask );
-      
-      //dat = get_image_value( data, dt, G_lAxes, xx, yy,
-      //                       dss, xx_desc, yy_desc, null, has_null );
-      
+      dat = get_image_value( image, xx, yy);
+            
       if ( ds_dNAN( dat ) || ( dat < minval)) {
         /* do nothing */
       } else {
@@ -232,7 +213,7 @@ int dmimgtess()
 
 
   /* Have to have at least 3 events */
-  if ( 3 > (numEvents = load_image( infile, &events, minval, &inBlock ))) {
+  if ( 3 > (numEvents = load_infile_image( infile, &events, minval, &inBlock ))) {
     return(-1);
   }
 

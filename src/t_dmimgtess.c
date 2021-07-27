@@ -63,6 +63,7 @@ H***************************************************************** */
 
 #include "dslib.h"
 
+extern int dmimgtess(void);
 
 int main(int argc, char** argv)
 {
